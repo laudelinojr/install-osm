@@ -1,7 +1,7 @@
 # Instalação do OpenSource OSM  :cloud:
 
 ### OSM Release: 8.0
-[OpenStack Releases](https://releases.openstack.org/)
+[OSM](https://osm.etsi.org/docs/user-guide/01-quickstart.html#installing-osm)
 
 ## Requisitos mínimos de hardware
 - 2 processadores
