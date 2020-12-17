@@ -10,3 +10,19 @@
 
 ## Sistema Operacional
 - Ubuntu18.04 (64-bit variant required)
+
+
+wget https://osm-download.etsi.org/ftp/osm-8.0-eight/install_osm.sh
+chmod +x install_osm.sh
+./install_osm.sh 2>&1 | tee osm_install_log.txt
+
+
+docker stack ps osm |grep -i running
+docker service ls
+
+newgrp docker
+
+Para reiniciar tudo
+docker stack rm osm
+docker stack deploy -c /etc/osm/docker/docker-compose.yaml osm
+
