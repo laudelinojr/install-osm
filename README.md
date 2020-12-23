@@ -11,7 +11,7 @@
 ## Sistema Operacional
 - Ubuntu18.04 (64-bit variant required)
 
-## Passo a Passo para isntalação
+## Passo a Passo para instalação
 
 1) Sugiro criar na instalaçao do Ubuntu o usuário chamado mano.
 
@@ -26,8 +26,8 @@ chmod +x install_osm.sh
 
 4) Será solicitado a senha do sudo para o usuário mano.
 
-5) Depois de tudo instalado, digite no broser
-endereco_ip
+5) Depois de tudo instalado, digite no browser:
+http://endereco_ip
 
 6) Execute o comando abaixo e observe se o status é "RUNNING"
 ```bash
@@ -56,20 +56,22 @@ kubectl logs -n osm statefulset/zookeeper     # for Zookeeper
 10) Digite usuário e senha admin opara acessar a interface web
 
 11)
-OSM (http://endereco_ip)
-Grafana (http://endereco_ip:9091)
-Prometheus (http://endereco_ip:3000)
+- OSM (http://endereco_ip)
+- Grafana (http://endereco_ip:9091)
+- Prometheus (http://endereco_ip:3000)
 
 12) para adicionar um VIM OpenStack, neste caso, o Victoria
 ```bash
 osm vim-create --name openstack1 --user admin --password keystoneadmin --auth_url http://endereco_ip/identity/v3 --tenant admin --account_type openstack --config='{security_groups: gs_admin, keypair: }'
 ```
-
 Obs.: No exemplo acima foi criado um security group denominado gs_admin, para evitar utilizar o default.
 
 
 
 
+
+
+Antigo...
 docker stack ps osm |grep -i running
 docker service ls
 
