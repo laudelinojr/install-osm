@@ -31,6 +31,7 @@ endereco_ip
 kubectl get all -n osm
 
 7) Para verificar o log por container
+```bash
 kubectl logs -n osm deployments/lcm           # for LCM
 kubectl logs -n osm deployments/light-ui      # for LW-UI
 kubectl logs -n osm deployments/mon           # for MON
@@ -43,6 +44,7 @@ kubectl logs -n osm statefulset/mongo         # for Mongo
 kubectl logs -n osm statefulset/mysql         # for Mysql
 kubectl logs -n osm statefulset/prometheus    # for Prometheus
 kubectl logs -n osm statefulset/zookeeper     # for Zookeeper
+```
 
 8) Verifique o status 
 
@@ -55,7 +57,9 @@ Grafana (http://endereco_ip:9091)
 Prometheus (http://endereco_ip:3000)
 
 12) para adicionar um VIM OpenStack, neste caso, o Victoria
+```bash
 osm vim-create --name openstack1 --user admin --password keystoneadmin --auth_url http://endereco_ip/identity/v3 --tenant admin --account_type openstack --config='{security_groups: gs_admin, keypair: }'
+```
 
 Obs.: No exemplo acima foi criado um security group denominado gs_admin, para evitar utilizar o default.
 
