@@ -16,9 +16,11 @@
 1) Sugiro criar na instalaçao do Ubuntu o usuário chamado mano.
 
 2) Para instalar o OSM e monitoramento do kubernetes cluster
+```bash
 wget https://osm-download.etsi.org/ftp/osm-9.0-nine/install_osm.sh
 chmod +x install_osm.sh
 ./install_osm.sh --k8s_monitor 2>&1 | tee osm_install_log.txt
+```
 
 3) Ao ser questionado sobre prosseguir com a instalação, digite "Y".
 
@@ -28,7 +30,9 @@ chmod +x install_osm.sh
 endereco_ip
 
 6) Execute o comando abaixo e observe se o status é "RUNNING"
+```bash
 kubectl get all -n osm
+```
 
 7) Para verificar o log por container
 ```bash
