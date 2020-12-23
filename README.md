@@ -1,4 +1,4 @@
-# Instalação do OpenSource OSM  :orchestrator:
+# Instalação do OpenSource OSM  :cloud:
 
 ### OSM Release: 9.0
 [OSM](https://osm.etsi.org/docs/user-guide/01-quickstart.html)
