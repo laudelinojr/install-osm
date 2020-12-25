@@ -15,26 +15,29 @@
 
 1) Sugiro criar na instalaçao do Ubuntu o usuário chamado mano.
 
-2) Para instalar o OSM e monitoramento do kubernetes cluster
+2) Desativar serviço
+sudo systemctl stop ufw
+
+3) Para instalar o OSM e monitoramento do kubernetes cluster
 ```bash
 wget https://osm-download.etsi.org/ftp/osm-9.0-nine/install_osm.sh
 chmod +x install_osm.sh
 ./install_osm.sh --k8s_monitor 2>&1 | tee osm_install_log.txt
 ```
 
-3) Ao ser questionado sobre prosseguir com a instalação, digite "Y".
+4) Ao ser questionado sobre prosseguir com a instalação, digite "Y".
 
-4) Será solicitado a senha do sudo para o usuário mano.
+5) Será solicitado a senha do sudo para o usuário mano.
 
-5) Depois de tudo instalado, digite no browser:
+6) Depois de tudo instalado, digite no browser:
 http://endereco_ip
 
-6) Execute o comando abaixo e observe se o status é "RUNNING"
+7) Execute o comando abaixo e observe se o status é "RUNNING"
 ```bash
 kubectl get all -n osm
 ```
 
-7) Para verificar o log por container
+8) Para verificar o log por container
 ```bash
 kubectl logs -n osm deployments/lcm           # for LCM
 kubectl logs -n osm deployments/light-ui      # for LW-UI
@@ -50,7 +53,7 @@ kubectl logs -n osm statefulset/prometheus    # for Prometheus
 kubectl logs -n osm statefulset/zookeeper     # for Zookeeper
 ```
 
-8) Verifique o status 
+9) Verifique o status 
 
 
 10) Digite usuário e senha admin opara acessar a interface web
