@@ -67,9 +67,13 @@ kubectl logs -n osm statefulset/zookeeper     # for Zookeeper
 ```bash
 osm vim-create --name openstack1 --user admin --password keystoneadmin --auth_url http://endereco_ip/identity/v3 --tenant admin --account_type openstack --config='{security_groups: sg_admin, keypair: }'
 ```
-Obs.: No exemplo acima foi criado um security group denominado gs_admin, para evitar utilizar o default.
+Obs.: No exemplo acima foi criado um security group denominado sg_admin, para evitar utilizar o default.
 
 
+13) Ao acessar o grafana pela primeira vez, utilize a senha default:
+usuario: admin
+senha: admin
+Obs.: Ao ser questionado para renomear a senha, clique em Skip.
 
 
 
