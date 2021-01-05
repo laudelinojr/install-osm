@@ -65,7 +65,7 @@ kubectl logs -n osm statefulset/zookeeper     # for Zookeeper
 
 12) para adicionar um VIM OpenStack, neste caso, o Victoria
 ```bash
-osm vim-create --name openstack1 --user admin --password keystoneadmin --auth_url http://endereco_ip/identity/v3 --tenant admin --account_type openstack --config='{security_groups: sg_admin, keypair: }'
+osm vim-create --name openstack1 --user admin --password keystoneadmin --auth_url http://endereco_ip:5000/v3 --tenant admin --account_type openstack --config='{security_groups: sg_admin, keypair: }'
 ```
 Obs.: No exemplo acima foi criado um security group denominado sg_admin, para evitar utilizar o default.
 
