@@ -75,7 +75,8 @@ usuario: admin
 senha: admin
 Obs.: Ao ser questionado para renomear a senha, clique em Skip.
 
-
+14) Para verificar as portas relacinadas a aplicacoes do OSM e aplicacoes correlatas
+kubectl get pods -A -o wide
 
 
 Antigo...
