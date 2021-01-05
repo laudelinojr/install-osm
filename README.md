@@ -60,8 +60,8 @@ kubectl logs -n osm statefulset/zookeeper     # for Zookeeper
 
 11)
 - OSM (http://endereco_ip)
-- Grafana (http://endereco_ip:9091)
-- Prometheus (http://endereco_ip:3000)
+- Grafana (http://endereco_ip:3000)
+- Prometheus (http://endereco_ip:9091)
 
 12) para adicionar um VIM OpenStack, neste caso, o Victoria
 ```bash
