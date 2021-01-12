@@ -27,23 +27,37 @@ chmod +x install_osm.sh
 %comment na versao 9 ./install_osm.sh -c swarm%
 
 3) Verificar se todos os containers subiram e estão em estado de running, e verificar as portas utilizadas
+```bash
 docker stack ps osm |grep -i running
 docker service ls
+```
 
-4) A qualquer tempo, é possível fazer re deploy
+4) Se os comandos já citados não funcionarem, será necessário efetuar rodar o comando abaixo para adicionar o usuário em questão no grupo docker
+```bash
+newgrp docker
+```
+
+5) A qualquer tempo, é possível fazer re deploy
+```bash
 docker stack rm osm && sleep 60
 docker stack deploy -c /etc/osm/docker/docker-compose.yaml osm
+```
 
-5) Para verificar os logs
+6) Para verificar os logs
+```bash
 docker service logs osm_lcm     # exibe logs de todos os containers (inclusive os "dead") associados ao osm_lcm.
 docker logs $(docker ps -aqf "name=osm_lcm" -n 1)  # exibe os logs do último container osm_lcm
+```
+
 
 ## Versão 9 com kubernetes
 
 1) Sugiro criar na instalaçao do Ubuntu o usuário chamado mano.
 
 2) Desativar serviço
+```bash
 sudo systemctl stop ufw
+```
 
 3) Para instalar o OSM e monitoramento do kubernetes cluster
 ```bash
@@ -106,8 +120,9 @@ senha: admin
 Obs.: Ao ser questionado para renomear a senha, clique em Skip.
 
 14) Para verificar as portas relacinadas a aplicacoes do OSM e aplicacoes correlatas
+```bash
 kubectl get pods -A -o wide
-
+```
 
 
 newgrp docker
