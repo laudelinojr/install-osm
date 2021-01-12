@@ -121,7 +121,7 @@ http://endereco_ip
 ```bash
 osm vim-create --name openstack1 --user admin --password keystoneadmin --auth_url http://endereco_ip:5000/v3 --tenant admin --account_type openstack --config='{security_groups: sg_admin, keypair: }'
 ```
-Obs.: No exemplo acima foi criado um security group denominado sg_admin, para evitar utilizar o default.
+Obs.: No exemplo acima foi criado um security group denominado sg_admin, para evitar utilizar o default. Neste grupo foi permitido acesso ssh e entrada e saída de pacotes icmp.
 
 
 14) Ao acessar o grafana pela primeira vez, utilize a senha default:
@@ -129,6 +129,9 @@ usuario: admin
 senha: admin
 Obs.: Ao ser questionado para renomear a senha, clique em Skip.
 
+15) Ao acessar a interface do prometheus, será possível visualizar as métricas que começam com o nome osm_.
 
+16) Adiconando VNF e NS
+O OSM cria as instancias e parametros de rede no VIM baseado em arquivos descriptors, que estão no formato YAM.
 
 
