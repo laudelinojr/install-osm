@@ -161,10 +161,10 @@ osm nsd-list
 ```
 19) Instanciando
 ```bash
-osm ns-create --nsd_name cirros_2vnf_ns --ns_name teste1 --vim_account openstack1
+osm ns-create --nsd_name webserver_vimmetric_autoscale_vnf --ns_name teste1 --vim_account openstack1
 osm ns-list
 ```
-Obs.: Observe que o vim_account foi definido no passo 13
+Obs.: Observe que o vim_account foi definido no passo 13 e o nsd_name no passo 18.
 
 20) Entre no openstack e observe que as instancias e respectivas redes foram criadas.
 
