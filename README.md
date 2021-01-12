@@ -192,3 +192,6 @@ http://osm-download.etsi.org/repository/osm/debian/ReleaseEIGHT/docs/osm-im/osm_
 
 26) Métricas VIM
 https://osm.etsi.org/docs/user-guide/05-osm-usage.html#vim-metrics
+
+27) Fonte Descriptor autoscaling
+https://osm.etsi.org/docs/user-guide/05-osm-usage.html#scaling-descriptor
