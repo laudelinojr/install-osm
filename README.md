@@ -132,6 +132,19 @@ Obs.: Ao ser questionado para renomear a senha, clique em Skip.
 15) Ao acessar a interface do prometheus, será possível visualizar as métricas que começam com o nome osm_.
 
 16) Adiconando VNF e NS
-O OSM cria as instancias e parametros de rede no VIM baseado em arquivos descriptors, que estão no formato YAM.
+O OSM cria as instancias e parametros de rede no VIM baseado em arquivos descriptors, que estão no formato YAML.
+No exemplo abaixo iremos adicionar uma NS, que compõe dois tipos de instancias, ligado por redes privadas. Uma instancia possui o haproxy e outra um webserver, ambos em Ubuntu.
+A memoria e cpu das instancias com apache são monitoradas, e quando chegar nos limites pré-estabelecidos no descriptor, novas instâncias serão criadas ou excluídas.
 
+https://github.com/laudelinojr/install-osm/raw/main/webserver_vimmetric_autoscale_nsd.tar.gz
+https://github.com/laudelinojr/install-osm/raw/main/webserver_vimmetric_autoscale_vnfd.tar.gz
 
+Obs.: As imagens haproxy_ubuntu e apache_ubuntu precisam estar importadas no OpenStack. Elas podem ser baixadas do link.
+https://osm-download.etsi.org/ftp/osm-4.0-four/4th-hackfest/images/
+
+Seguem os comandos para inserir estas imagens no openstack:
+```bash
+  source admin-openrc.sh
+  openstack  image  create  --file="./haproxy_ubuntu.qcow2" --container-format=bare  --disk-format=qcow2  haproxy_ubuntu
+  openstack  image  create  --file="./apache_ubuntu.qcow2" --container-format=bare  --disk-format=qcow2  apache_ubuntu
+```
