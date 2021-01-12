@@ -189,3 +189,6 @@ https://osm-download.etsi.org/ftp/Packages/examples/
 
 25) Árvore de parametro VNFD
 http://osm-download.etsi.org/repository/osm/debian/ReleaseEIGHT/docs/osm-im/osm_im_trees/vnfd.html
+
+26) Métricas VIM
+https://osm.etsi.org/docs/user-guide/05-osm-usage.html#vim-metrics
