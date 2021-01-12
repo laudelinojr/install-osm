@@ -12,6 +12,33 @@
 - Ubuntu18.04 (64-bit variant required)
 
 ## Passo a Passo para instalação
+Serão citadas as instações da versão 8 com docker e versão 9 com kubernetes
+
+## Versão 8 com docker
+
+1) Sugiro criar na instalaçao do Ubuntu o usuário chamado mano.
+
+2) Para instalar o OSM
+```bash
+wget https://osm-download.etsi.org/ftp/osm-8.0-eight/install_osm.sh
+chmod +x install_osm.sh
+./install_osm.sh 2>&1 | tee osm_install_log.txt
+```
+%comment na versao 9 ./install_osm.sh -c swarm%
+
+3) Verificar se todos os containers subiram e estão em estado de running, e verificar as portas utilizadas
+docker stack ps osm |grep -i running
+docker service ls
+
+4) A qualquer tempo, é possível fazer re deploy
+docker stack rm osm && sleep 60
+docker stack deploy -c /etc/osm/docker/docker-compose.yaml osm
+
+5) Para verificar os logs
+docker service logs osm_lcm     # exibe logs de todos os containers (inclusive os "dead") associados ao osm_lcm.
+docker logs $(docker ps -aqf "name=osm_lcm" -n 1)  # exibe os logs do último container osm_lcm
+
+## Versão 9 com kubernetes
 
 1) Sugiro criar na instalaçao do Ubuntu o usuário chamado mano.
 
@@ -54,12 +81,15 @@ kubectl logs -n osm statefulset/zookeeper     # for Zookeeper
 ```
 
 9) Verifique o status 
+kubectl get all -n monitoring
 
+
+### Comum às versões 8 e 9
 
 10) Digite usuário e senha admin opara acessar a interface web
+http://endereco_ip
 
-11)
-- OSM (http://endereco_ip)
+11) Para acessar o Grafana (dashboards) e Prometheus (coletor de dados do VIM)
 - Grafana (http://endereco_ip:3000)
 - Prometheus (http://endereco_ip:9091)
 
@@ -79,13 +109,7 @@ Obs.: Ao ser questionado para renomear a senha, clique em Skip.
 kubectl get pods -A -o wide
 
 
-Antigo...
-docker stack ps osm |grep -i running
-docker service ls
 
 newgrp docker
 
-Para reiniciar tudo
-docker stack rm osm
-docker stack deploy -c /etc/osm/docker/docker-compose.yaml osm
 
