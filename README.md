@@ -52,6 +52,7 @@ docker logs $(docker ps -aqf "name=osm_lcm" -n 1)  # exibe os logs do último co
 7)
 8)
 9)
+10)
 
 ## Versão 9 com kubernetes
 
@@ -101,31 +102,32 @@ kubectl logs -n osm statefulset/zookeeper     # for Zookeeper
 kubectl get all -n monitoring
 
 
+10) Para verificar as portas relacinadas a aplicacoes do OSM e aplicacoes correlatas
+```bash
+kubectl get pods -A -o wide
+```
+
+
 ### Comum às versões 8 e 9
 
-10) Digite usuário e senha admin opara acessar a interface web
+11) Digite usuário e senha admin opara acessar a interface web
 http://endereco_ip
 
-11) Para acessar o Grafana (dashboards) e Prometheus (coletor de dados do VIM)
+12) Para acessar o Grafana (dashboards) e Prometheus (coletor de dados do VIM)
 - Grafana (http://endereco_ip:3000)
 - Prometheus (http://endereco_ip:9091)
 
-12) para adicionar um VIM OpenStack, neste caso, o Victoria
+13) para adicionar um VIM OpenStack, neste caso, o Victoria
 ```bash
 osm vim-create --name openstack1 --user admin --password keystoneadmin --auth_url http://endereco_ip:5000/v3 --tenant admin --account_type openstack --config='{security_groups: sg_admin, keypair: }'
 ```
 Obs.: No exemplo acima foi criado um security group denominado sg_admin, para evitar utilizar o default.
 
 
-13) Ao acessar o grafana pela primeira vez, utilize a senha default:
+14) Ao acessar o grafana pela primeira vez, utilize a senha default:
 usuario: admin
 senha: admin
 Obs.: Ao ser questionado para renomear a senha, clique em Skip.
-
-14) Para verificar as portas relacinadas a aplicacoes do OSM e aplicacoes correlatas
-```bash
-kubectl get pods -A -o wide
-```
 
 
 
