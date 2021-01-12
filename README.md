@@ -170,3 +170,18 @@ Obs.: Observe que o vim_account foi definido no passo 13 e o nsd_name no passo 1
 
 21) Testando AutoScaling
 
+
+22) Deletando instancia NS
+```bash
+osm ns-delete <ns-instance-name>
+osm ns-list
+```
+
+23) Deletando VNF e NS pakage
+osm webserver_vimmetric_autoscale_nsd
+osm nsd-list
+osm vnfd-delete webserver_vimmetric_autoscale_vnfd
+osm vnfd-list
+
+24) Exemplos de descritores
+https://osm-download.etsi.org/ftp/Packages/examples/
