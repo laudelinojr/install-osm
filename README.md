@@ -49,6 +49,9 @@ docker service logs osm_lcm     # exibe logs de todos os containers (inclusive o
 docker logs $(docker ps -aqf "name=osm_lcm" -n 1)  # exibe os logs do último container osm_lcm
 ```
 
+7)
+8)
+9)
 
 ## Versão 9 com kubernetes
 
@@ -125,6 +128,5 @@ kubectl get pods -A -o wide
 ```
 
 
-newgrp docker
 
 
