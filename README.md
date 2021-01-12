@@ -139,12 +139,34 @@ A memoria e cpu das instancias com apache são monitoradas, e quando chegar nos 
 https://github.com/laudelinojr/install-osm/raw/main/webserver_vimmetric_autoscale_nsd.tar.gz
 https://github.com/laudelinojr/install-osm/raw/main/webserver_vimmetric_autoscale_vnfd.tar.gz
 
-Obs.: As imagens haproxy_ubuntu e apache_ubuntu precisam estar importadas no OpenStack. Elas podem ser baixadas do link.
+16.1) Obs.: As imagens haproxy_ubuntu e apache_ubuntu precisam estar importadas no OpenStack. Elas podem ser baixadas do link.
 https://osm-download.etsi.org/ftp/osm-4.0-four/4th-hackfest/images/
 
 Seguem os comandos para inserir estas imagens no openstack:
 ```bash
-  source admin-openrc.sh
+  source admin-openrc.sh (é necessário baixar prreviamente o arquivo na interface do OpenStack)
   openstack  image  create  --file="./haproxy_ubuntu.qcow2" --container-format=bare  --disk-format=qcow2  haproxy_ubuntu
   openstack  image  create  --file="./apache_ubuntu.qcow2" --container-format=bare  --disk-format=qcow2  apache_ubuntu
 ```
+17) Importando NS
+```bash
+osm vnfd-create webserver_vimmetric_autoscale_nsd.gz
+osm vnfd-list
+```
+
+18) Importando VNF
+```bash
+osm nsd-create webserver_vimmetric_autoscale_vnfd.tar.gz
+osm nsd-list
+```
+19) Instanciando
+```bash
+osm ns-create --nsd_name cirros_2vnf_ns --ns_name teste1 --vim_account openstack1
+osm ns-list
+```
+Obs.: Observe que o vim_account foi definido no passo 13
+
+20) Entre no openstack e observe que as instancias e respectivas redes foram criadas.
+
+21) Testando AutoScaling
+
