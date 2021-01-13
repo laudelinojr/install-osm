@@ -169,6 +169,7 @@ Obs.: Observe que o vim_account foi definido no passo 13 e o nsd_name no passo 1
 20) Entre no openstack e observe que as instancias e respectivas redes foram criadas.
 
 21) Testando AutoScaling
+
 21.1) No security group sg_admin, crie uma regra para permitir o trafego tcp para a porta 32700.
 
 21.2) execute no browser o ip da rede externa concebido à instancia haproxy para acessar a interface web:
