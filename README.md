@@ -169,7 +169,15 @@ Obs.: Observe que o vim_account foi definido no passo 13 e o nsd_name no passo 1
 20) Entre no openstack e observe que as instancias e respectivas redes foram criadas.
 
 21) Testando AutoScaling
+21.1) No security group sg_admin, crie uma regra para permitir o trafego tcp para a porta 32700.
 
+21.2) execute no browser o ip da rede externa concebido à instancia haproxy para acessar a interface web:
+http://endereco_ip:32700
+Digite usuário "osm" e senha "osm2018"
+
+21.3) Acesse o haproxy via ssh utilizando o usuário "ubuntu" e senha "osm2018".
+
+21.4) Caso queira acessar algum apache, pode ser feito acesso via console com o usuário "ubuntu" e senha "osm2018"
 
 22) Deletando instancia NS
 ```bash
@@ -185,7 +193,6 @@ osm vnfd-list
 
 24) Exemplos de descritores
 https://osm-download.etsi.org/ftp/Packages/examples/
-
 
 25) Árvore de parametro VNFD
 http://osm-download.etsi.org/repository/osm/debian/ReleaseEIGHT/docs/osm-im/osm_im_trees/vnfd.html
