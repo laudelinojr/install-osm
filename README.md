@@ -180,6 +180,13 @@ Digite usuário "osm" e senha "osm2018"
 
 21.4) Caso queira acessar algum apache, pode ser feito acesso via console com o usuário "ubuntu" e senha "osm2018"
 
+21.5) Em uma máquina com linux instale o seguinte utilitário para efetuar testes no haproxy
+
+sudo apt install apache2-utils
+ab -n 5000000 -c 2 http://[load-balancer-ip]/test.php
+# This will stress CPU to 100% and trigger a scale-out operation in POL.
+# In this test, scaling will usually go up to 3 web servers before HAProxy spreads to load to reach a normal CPU level (w/ 60s granularity, 180s cooldown)
+
 22) Deletando instancia NS
 ```bash
 osm ns-delete <ns-instance-name>
