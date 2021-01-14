@@ -184,8 +184,7 @@ Digite usuário "osm" e senha "osm2018"
 
 sudo apt install apache2-utils
 ab -n 5000000 -c 2 http://[load-balancer-ip]/test.php
-# This will stress CPU to 100% and trigger a scale-out operation in POL.
-# In this test, scaling will usually go up to 3 web servers before HAProxy spreads to load to reach a normal CPU level (w/ 60s granularity, 180s cooldown)
+Este comando irá stressar a CPU para 100% e ativar o scale-out no POL
 
 22) Deletando instancia NS
 ```bash
