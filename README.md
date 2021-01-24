@@ -1,6 +1,6 @@
 # Instalação do OpenSource OSM  :cloud:
 
-### OSM Release: 9.0
+### OSM Release: 8.0 e 9.0
 [OSM](https://osm.etsi.org/docs/user-guide/01-quickstart.html)
 
 ## Requisitos mínimos de hardware
