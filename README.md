@@ -217,3 +217,7 @@ Teste
 mysql -h localhost -u mano -p
 
 senha manopw
+
+
+testes
+yes > /dev/null &
