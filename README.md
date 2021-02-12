@@ -18,23 +18,23 @@ Serão citadas as instações da versão 8 com docker e versão 9 com kubernetes
 
 1) Sugiro criar na instalaçao do Ubuntu o usuário chamado mano.
 
-2) Para instalar o OSM
+2) Execute os comandos abaixo
+```bash
+sudo groupadd docker
+sudo usermod -aG docker mano
+newgrp docker
+```
+
+3) Para instalar o OSM
 ```bash
 wget https://osm-download.etsi.org/ftp/osm-8.0-eight/install_osm.sh
 chmod +x install_osm.sh
 ./install_osm.sh 2>&1 | tee osm_install_log.txt
 ```
-%comment na versao 9 ./install_osm.sh -c swarm%
-
-3) Verificar se todos os containers subiram e estão em estado de running, e verificar as portas utilizadas
+4) Verificar se todos os containers subiram e estão em estado de running, e verificar as portas utilizadas
 ```bash
 docker stack ps osm |grep -i running
 docker service ls
-```
-
-4) Se os comandos já citados não funcionarem, será necessário efetuar rodar o comando abaixo para adicionar o usuário em questão no grupo docker
-```bash
-newgrp docker
 ```
 
 5) A qualquer tempo, é possível fazer re deploy
@@ -69,6 +69,8 @@ wget https://osm-download.etsi.org/ftp/osm-9.0-nine/install_osm.sh
 chmod +x install_osm.sh
 ./install_osm.sh --k8s_monitor 2>&1 | tee osm_install_log.txt
 ```
+Obs.: Caso queira instalar uma versão com docker, execute o comando: %comment na versao 9 ./install_osm.sh -c swarm.
+
 
 4) Ao ser questionado sobre prosseguir com a instalação, digite "Y".
 
