@@ -31,6 +31,9 @@ wget https://osm-download.etsi.org/ftp/osm-8.0-eight/install_osm.sh
 chmod +x install_osm.sh
 ./install_osm.sh 2>&1 | tee osm_install_log.txt
 ```
+
+Obs.: Caso deseje instalar como módulo de placement, será necessário adicinoar o parametro --pla  depois do install_osm.sh
+
 4) Verificar se todos os containers subiram e estão em estado de running, e verificar as portas utilizadas
 ```bash
 docker stack ps osm |grep -i running
