@@ -131,7 +131,7 @@ Obs.: Ao ser questionado para renomear a senha, clique em Skip.
 
 15) Ao acessar a interface do prometheus, será possível visualizar as métricas que começam com o nome osm_.
 
-16) Adiconando VNF e NS
+16) Adiconando VNF e NS (compatível apenas com versão 8)
 O OSM cria as instancias e parametros de rede no VIM baseado em arquivos descriptors, que estão no formato YAML.
 No exemplo abaixo iremos adicionar uma NS, que compõe dois tipos de instancias, ligado por redes privadas. Uma instancia possui o haproxy e outra um webserver, ambos em Ubuntu.
 A memoria e cpu das instancias com apache são monitoradas, e quando chegar nos limites pré-estabelecidos no descriptor, novas instâncias serão criadas ou excluídas.
