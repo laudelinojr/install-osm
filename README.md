@@ -233,4 +233,7 @@ para varios vims
 
 osm ns-create --ns_name teste_vims --nsd_name hackfest2-ns --vim_account openstack1 --config '{vnf: [ {member-vnf-index: "1", vim_account: openstack1}, {member-vnf-index: "2", vim_account: openstack2} ], vld: [ {name: mgmtnet, vim-network-name: {openstack1: provider-net, openstack2: provider-net} } ], wim_account: False }'
 
+para pla
+
+osm ns-create --ns_name teste_vims2 --nsd_name hackfest2-ns --vim_account openstack1 --config '{vnf: [ {member-vnf-index: "1", vim_account: openstack1}, {member-vnf-index: "2", vim_account: openstack2} ], vld: [ {name: mgmtnet, vim-network-name: {openstack1: provider-net, openstack2: provider-net} } ], wim_account: False, placement-engine: PLA }'
 
