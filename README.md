@@ -237,3 +237,8 @@ para pla
 
 osm ns-create --ns_name teste_vims2 --nsd_name hackfest2-ns --vim_account openstack1 --config '{vnf: [ {member-vnf-index: "1", vim_account: openstack1}, {member-vnf-index: "2", vim_account: openstack2} ], vld: [ {name: mgmtnet, vim-network-name: {openstack1: provider-net, openstack2: provider-net} } ], wim_account: False, placement-engine: PLA }'
 
+
+Pazer uso do recurso de placement
+osm ns-create --nsd_name hackfest1-ns --ns_name test1 --vim_account openstack1 --config '{placement-engine: PLA}'
+docker logs $(docker ps -aqf "name=osm_pla" -n 1)
+docker logs $(docker ps -aqf "name=osm_lcm" -n 1)
