@@ -14,7 +14,7 @@
 ## Passo a Passo para instalação
 Serão citadas as instações da versão 8 com docker e versão 9 com kubernetes
 
-## Versão 8 com docker
+## Versão 8 com docker por padrão
 
 1) Sugiro criar na instalaçao do Ubuntu o usuário chamado mano.
 
@@ -57,7 +57,7 @@ docker logs $(docker ps -aqf "name=osm_lcm" -n 1)  # exibe os logs do último co
 9) -- 
 10) -- 
 
-## Versão 9 com kubernetes
+## Versão 9 com kubernetes por padrão
 
 1) Sugiro criar na instalaçao do Ubuntu o usuário chamado mano.
 
@@ -78,6 +78,10 @@ Obs.: Caso queira instalar uma versão com docker, execute o comando:
 ./install_osm.sh -c swarm 2>&1 | tee osm_install_log.txt.
 ```
 
+Obs.: Caso queira instalar uma versão com docker e pla, execute o comando:
+```bash
+./install_osm.sh -c swarm --pla 2>&1 | tee osm_install_log.txt.
+```
 
 4) Ao ser questionado sobre prosseguir com a instalação, digite "Y".
 
