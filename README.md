@@ -52,10 +52,10 @@ docker service logs osm_lcm     # exibe logs de todos os containers (inclusive o
 docker logs $(docker ps -aqf "name=osm_lcm" -n 1)  # exibe os logs do último container osm_lcm
 ```
 
-7)
-8)
-9)
-10)
+7) --
+8) --
+9) -- 
+10) -- 
 
 ## Versão 9 com kubernetes
 
@@ -70,7 +70,7 @@ sudo systemctl stop ufw
 ```bash
 wget https://osm-download.etsi.org/ftp/osm-9.0-nine/install_osm.sh
 chmod +x install_osm.sh
-./install_osm.sh --k8s_monitor 2>&1 | tee osm_install_log.txt
+./install_osm.sh 2>&1 | tee osm_install_log.txt
 ```
 Obs.: Caso queira instalar uma versão com docker, execute o comando: %comment na versao 9 ./install_osm.sh -c swarm.
 
