@@ -73,7 +73,10 @@ chmod +x install_osm.sh
 ./install_osm.sh 2>&1 | tee osm_install_log.txt
 
 ```
-Obs.: Caso queira instalar uma versão com docker, execute o comando: %comment na versao 9 ./install_osm.sh -c swarm.
+Obs.: Caso queira instalar uma versão com docker, execute o comando: 
+```bash
+./install_osm.sh -c swarm 2>&1 | tee osm_install_log.txt.
+```
 
 
 4) Ao ser questionado sobre prosseguir com a instalação, digite "Y".
