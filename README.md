@@ -104,11 +104,8 @@ kubectl logs -n osm statefulset/prometheus    # for Prometheus
 kubectl logs -n osm statefulset/zookeeper     # for Zookeeper
 ```
 
-9) Verifique o status 
-kubectl get all -n monitoring
 
-
-10) Para verificar as portas relacinadas a aplicacoes do OSM e aplicacoes correlatas
+9) Para verificar as portas relacinadas a aplicacoes do OSM e aplicacoes correlatas
 ```bash
 kubectl get pods -A -o wide
 ```
@@ -116,28 +113,28 @@ kubectl get pods -A -o wide
 
 ### Comum às versões 8 e 9
 
-11) Digite usuário e senha admin opara acessar a interface web
+10) Digite usuário e senha admin opara acessar a interface web
 http://endereco_ip
 
-12) Para acessar o Grafana (dashboards) e Prometheus (coletor de dados do VIM)
+11) Para acessar o Grafana (dashboards) e Prometheus (coletor de dados do VIM)
 - Grafana (http://endereco_ip:3000)
 - Prometheus (http://endereco_ip:9091)
 
-13) para adicionar um VIM OpenStack, neste caso, o Victoria
+12) para adicionar um VIM OpenStack, neste caso, o Victoria
 ```bash
 osm vim-create --name openstack1 --user admin --password keystoneadmin --auth_url http://endereco_ip:5000/v3 --tenant admin --account_type openstack --config='{security_groups: sg_admin, keypair: }'
 ```
 Obs.: No exemplo acima foi criado um security group denominado sg_admin, para evitar utilizar o default. Neste grupo foi permitido acesso ssh e entrada e saída de pacotes icmp.
 
 
-14) Ao acessar o grafana pela primeira vez, utilize a senha default:
+13) Ao acessar o grafana pela primeira vez, utilize a senha default:
 usuario: admin
 senha: admin
 Obs.: Ao ser questionado para renomear a senha, clique em Skip.
 
-15) Ao acessar a interface do prometheus, será possível visualizar as métricas que começam com o nome osm_.
+14) Ao acessar a interface do prometheus, será possível visualizar as métricas que começam com o nome osm_.
 
-16) Adiconando VNF e NS (compatível apenas com versão 8)
+15) Adiconando VNF e NS (compatível apenas com versão 8)
 O OSM cria as instancias e parametros de rede no VIM baseado em arquivos descriptors, que estão no formato YAML.
 No exemplo abaixo iremos adicionar uma NS, que compõe dois tipos de instancias, ligado por redes privadas. Uma instancia possui o haproxy e outra um webserver, ambos em Ubuntu.
 A memoria e cpu das instancias com apache são monitoradas, e quando chegar nos limites pré-estabelecidos no descriptor, novas instâncias serão criadas ou excluídas.
@@ -145,7 +142,7 @@ A memoria e cpu das instancias com apache são monitoradas, e quando chegar nos 
 https://github.com/laudelinojr/install-osm/raw/main/webserver_vimmetric_autoscale_nsd.tar.gz
 https://github.com/laudelinojr/install-osm/raw/main/webserver_vimmetric_autoscale_vnfd.tar.gz
 
-16.1) Obs.: As imagens haproxy_ubuntu e apache_ubuntu precisam estar importadas no OpenStack. Elas podem ser baixadas do link.
+15.1) Obs.: As imagens haproxy_ubuntu e apache_ubuntu precisam estar importadas no OpenStack. Elas podem ser baixadas do link.
 https://osm-download.etsi.org/ftp/osm-4.0-four/4th-hackfest/images/
 
 Seguem os comandos para inserir estas imagens no openstack:
@@ -154,66 +151,66 @@ Seguem os comandos para inserir estas imagens no openstack:
   openstack  image  create  --file="./haproxy_ubuntu.qcow2" --container-format=bare  --disk-format=qcow2  haproxy_ubuntu
   openstack  image  create  --file="./apache_ubuntu.qcow2" --container-format=bare  --disk-format=qcow2  apache_ubuntu
 ```
-17) Importando NS
+16) Importando NS
 ```bash
 osm vnfd-create webserver_vimmetric_autoscale_nsd.gz
 osm vnfd-list
 ```
 
-18) Importando VNF
+17) Importando VNF
 ```bash
 osm nsd-create webserver_vimmetric_autoscale_vnfd.tar.gz
 osm nsd-list
 ```
-19) Instanciando
+18) Instanciando
 ```bash
 osm ns-create --nsd_name webserver_vimmetric_autoscale_vnf --ns_name teste1 --vim_account openstack1
 osm ns-list
 ```
 Obs.: Observe que o vim_account foi definido no passo 13 e o nsd_name no passo 18.
 
-20) Entre no openstack e observe que as instancias e respectivas redes foram criadas.
+19) Entre no openstack e observe que as instancias e respectivas redes foram criadas.
 
-21) Testando AutoScaling
+20) Testando AutoScaling
 
-21.1) No security group sg_admin, crie uma regra para permitir o trafego tcp para a porta 32700.
+20.1) No security group sg_admin, crie uma regra para permitir o trafego tcp para a porta 32700.
 
-21.2) execute no browser o ip da rede externa concebido à instancia haproxy para acessar a interface web:
+20.2) execute no browser o ip da rede externa concebido à instancia haproxy para acessar a interface web:
 http://endereco_ip:32700
 Digite usuário "osm" e senha "osm2018"
 
-21.3) Acesse o haproxy via ssh utilizando o usuário "ubuntu" e senha "osm2018".
+20.3) Acesse o haproxy via ssh utilizando o usuário "ubuntu" e senha "osm2018".
 
-21.4) Caso queira acessar algum apache, pode ser feito acesso via console com o usuário "ubuntu" e senha "osm2018"
+20.4) Caso queira acessar algum apache, pode ser feito acesso via console com o usuário "ubuntu" e senha "osm2018"
 
-21.5) Em uma máquina com linux instale o seguinte utilitário para efetuar testes no haproxy
+20.5) Em uma máquina com linux instale o seguinte utilitário para efetuar testes no haproxy
 
 sudo apt install apache2-utils
 ab -n 5000000 -c 2 http://[load-balancer-ip]/test.php
 Este comando irá stressar a CPU para 100% e ativar o scale-out no POL
 
-22) Deletando instancia NS
+21) Deletando instancia NS
 ```bash
 osm ns-delete <ns-instance-name>
 osm ns-list
 ```
 
-23) Deletando VNF e NS pakage
+22) Deletando VNF e NS pakage
 osm webserver_vimmetric_autoscale_nsd
 osm nsd-list
 osm vnfd-delete webserver_vimmetric_autoscale_vnfd
 osm vnfd-list
 
-24) Exemplos de descritores
+23) Exemplos de descritores
 https://osm-download.etsi.org/ftp/Packages/examples/
 
-25) Árvore de parametro VNFD
+24) Árvore de parametro VNFD
 http://osm-download.etsi.org/repository/osm/debian/ReleaseEIGHT/docs/osm-im/osm_im_trees/vnfd.html
 
-26) Métricas VIM
+25) Métricas VIM
 https://osm.etsi.org/docs/user-guide/05-osm-usage.html#vim-metrics
 
-27) Fonte Descriptor autoscaling
+26) Fonte Descriptor autoscaling
 https://osm.etsi.org/docs/user-guide/05-osm-usage.html#scaling-descriptor
 
 
