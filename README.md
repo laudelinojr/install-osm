@@ -71,6 +71,7 @@ sudo systemctl stop ufw
 wget https://osm-download.etsi.org/ftp/osm-9.0-nine/install_osm.sh
 chmod +x install_osm.sh
 ./install_osm.sh 2>&1 | tee osm_install_log.txt
+
 ```
 Obs.: Caso queira instalar uma versão com docker, execute o comando: %comment na versao 9 ./install_osm.sh -c swarm.
 
