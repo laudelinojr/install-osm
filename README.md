@@ -23,6 +23,7 @@ Serão citadas as instações da versão 8 com docker e versão 9 com kubernetes
 sudo groupadd docker
 sudo usermod -aG docker mano
 newgrp docker
+su - mano
 ```
 
 3) Para instalar o OSM
